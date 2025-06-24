@@ -54,31 +54,31 @@ def get_bigquery_client() -> bigquery.Client:
         )
 
 
-@mcp.tool()
-def spices() -> List[str]:
-    """
-    Get a list of spices available in my Kitchen
+# @mcp.tool()
+# def spices() -> List[str]:
+#     """
+#     Get a list of spices available in my Kitchen
     
-    Returns:
-        List of spice names
-    """
-    client = get_bigquery_client()
+#     Returns:
+#         List of spice names
+#     """
+#     client = get_bigquery_client()
     
-    query = f"""
-    SELECT name
-    FROM `{PROJECT_ID}.{DATASET_ID}.spices`
-    LIMIT 1000
-    """
+#     query = f"""
+#     SELECT name
+#     FROM `{PROJECT_ID}.{DATASET_ID}.spices`
+#     LIMIT 1000
+#     """
     
-    try:
-        query_job = client.query(query)
-        results = query_job.result()
+#     try:
+#         query_job = client.query(query)
+#         results = query_job.result()
         
-        spices = [row.name for row in results]
-        return spices
+#         spices = [row.name for row in results]
+#         return spices
         
-    except Exception as e:
-        return [f"Error fetching spices: {str(e)}"]
+#     except Exception as e:
+#         return [f"Error fetching spices: {str(e)}"]
 
 @mcp.tool()
 def query_bigquery(query: str) -> str:
